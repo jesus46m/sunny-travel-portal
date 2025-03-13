@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { PalmTree, Umbrella, ShoppingBag, Utensils, Music } from "lucide-react";
+import { Palmtree, Umbrella, ShoppingBag, Utensils, Music } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -90,7 +90,7 @@ const Home = () => {
       <section className="py-16 bg-miami-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <PalmTree className="inline-block h-12 w-12 text-miami-coral mb-4" />
+            <Palmtree className="inline-block h-12 w-12 text-miami-coral mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Bienvenido al Portal de Viajes a Miami
             </h2>

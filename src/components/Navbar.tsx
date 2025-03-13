@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, PalmTree } from "lucide-react";
+import { Menu, X, Palmtree } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <PalmTree className="h-8 w-8 text-miami-coral" />
+              <Palmtree className="h-8 w-8 text-miami-coral" />
               <span className="ml-2 text-xl font-bold text-primary">Miami Travel</span>
             </Link>
           </div>
