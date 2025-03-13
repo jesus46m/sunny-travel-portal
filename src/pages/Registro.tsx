@@ -52,6 +52,9 @@ const actividadesOpciones = [
   { id: "excursiones", label: "Excursiones y tours" },
 ];
 
+// API URL - change this if your server is running on a different port
+const API_URL = 'http://localhost:5000/api';
+
 const Registro = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -72,11 +75,29 @@ const Registro = () => {
     setIsSubmitting(true);
     
     try {
-      // Here you would normally send this data to your backend
-      console.log("Datos de registro:", data);
+      // Format the date for MySQL (YYYY-MM-DD)
+      const formattedDate = format(data.fecha_visita, 'yyyy-MM-dd');
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Prepare data for submission
+      const submissionData = {
+        ...data,
+        fecha_visita: formattedDate
+      };
+      
+      // Send data to the API
+      const response = await fetch(`${API_URL}/registrar-visita`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar el formulario');
+      }
       
       // Show success message
       toast.success("¡Registro completado con éxito!", {
