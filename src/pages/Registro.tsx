@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -52,8 +51,8 @@ const actividadesOpciones = [
   { id: "excursiones", label: "Excursiones y tours" },
 ];
 
-// API URL - change this if your server is running on a different port
-const API_URL = 'http://localhost:5000/api';
+// API URL - this should be an environment variable in production
+const API_URL = 'http://localhost:5000';
 
 const Registro = () => {
   const navigate = useNavigate();
@@ -75,6 +74,8 @@ const Registro = () => {
     setIsSubmitting(true);
     
     try {
+      console.log('Preparing to submit form data:', data);
+      
       // Format the date for MySQL (YYYY-MM-DD)
       const formattedDate = format(data.fecha_visita, 'yyyy-MM-dd');
       
@@ -84,8 +85,11 @@ const Registro = () => {
         fecha_visita: formattedDate
       };
       
+      console.log('Submitting data to API:', submissionData);
+      console.log('API URL:', `${API_URL}/api/registrar-visita`);
+      
       // Send data to the API
-      const response = await fetch(`${API_URL}/registrar-visita`, {
+      const response = await fetch(`${API_URL}/api/registrar-visita`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,11 +97,14 @@ const Registro = () => {
         body: JSON.stringify(submissionData),
       });
       
-      const result = await response.json();
-      
       if (!response.ok) {
-        throw new Error(result.error || 'Error al enviar el formulario');
+        const errorData = await response.json().catch(() => null);
+        console.error('API error response:', errorData);
+        throw new Error(errorData?.error || `Error: ${response.status} ${response.statusText}`);
       }
+      
+      const result = await response.json();
+      console.log('API success response:', result);
       
       // Show success message
       toast.success("¡Registro completado con éxito!", {

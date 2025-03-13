@@ -7,15 +7,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+// Middleware - enable CORS for all origins in development
+app.use(cors({
+  origin: '*', // Allow all origins in development
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // Database connection
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'miami_writer',
-  password: 'MiamiWriter456!',
+  user: 'root', // Update this to your phpMyAdmin username
+  password: '', // Update this to your phpMyAdmin password
   database: 'miami'
 });
 
@@ -30,7 +34,13 @@ db.connect(err => {
 
 // API endpoint to register a visit
 app.post('/api/registrar-visita', (req, res) => {
+  console.log('Received registration data:', req.body);
   const { nombre, email, fecha_visita, actividades, comentarios } = req.body;
+
+  // Validate required fields
+  if (!nombre || !email || !fecha_visita || !actividades) {
+    return res.status(400).json({ error: 'Todos los campos obligatorios deben ser proporcionados' });
+  }
 
   // Convert actividades array to JSON string
   const actividadesJSON = JSON.stringify(actividades);
@@ -77,6 +87,11 @@ app.get('/api/visitas', (req, res) => {
     
     return res.status(200).json(visitas);
   });
+});
+
+// Test endpoint
+app.get('/api/test', (req, res) => {
+  res.status(200).json({ message: 'API funcionando correctamente' });
 });
 
 // Start the server
