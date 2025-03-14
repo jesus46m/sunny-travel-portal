@@ -53,7 +53,10 @@ const actividadesOpciones = [
 
 // Use the window location to determine if we're in localhost or on the Lovable preview
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const API_URL = isLocalhost ? 'http://localhost:5000' : 'http://localhost:5000';
+
+// For the preview environment, we need to use a deployed API or configure the backend
+// For now, we'll keep using localhost:5000, but this will only work when running locally
+const API_URL = 'http://localhost:5000';
 
 const Registro = () => {
   const navigate = useNavigate();
@@ -96,8 +99,7 @@ const Registro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(submissionData),
-        // Adding these options to ensure cookies are sent with request
-        credentials: 'include',
+        // Removing credentials option that might be causing issues in the preview environment
       });
       
       if (!response.ok) {
@@ -124,13 +126,14 @@ const Registro = () => {
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       toast.error("Error al procesar tu registro", {
-        description: "Por favor asegúrate de que el servidor API esté funcionando correctamente en http://localhost:5000",
+        description: "Por favor asegúrate de que el servidor esté funcionando correctamente. Si estás usando la versión de vista previa, necesitarás ejecutar el servidor localmente.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // The rest of the component remains unchanged
   return (
     <div className="pt-20 pb-12 bg-miami-sand min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

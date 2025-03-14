@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware - enable CORS for both localhost:8080 and the Lovable preview app
+// Middleware - ensure CORS is configured to accept requests from both localhost and the Lovable app
 app.use(cors({
   origin: ['http://localhost:8080', /\.lovable\.app$/],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root', // Default phpMyAdmin user
-  password: '', // Default empty password
+  password: '', // Default empty password for XAMPP/WAMP
   database: 'miami'
 });
 
@@ -89,7 +89,7 @@ app.get('/api/visitas', (req, res) => {
   });
 });
 
-// Test endpoint
+// Test endpoint to verify API is working
 app.get('/api/test', (req, res) => {
   res.status(200).json({ message: 'API funcionando correctamente' });
 });
