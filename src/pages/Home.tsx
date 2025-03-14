@@ -17,24 +17,32 @@ const Home = () => {
   
   const highlights = [
     { 
+      id: "playas",
       title: "Playas de Ensueño", 
       description: "Disfruta de las famosas playas de arena blanca y aguas turquesas.", 
-      icon: <Umbrella className="w-10 h-10 text-miami-turquoise" /> 
+      icon: <Umbrella className="w-10 h-10 text-miami-turquoise" />,
+      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1664&auto=format&fit=crop"
     },
     { 
+      id: "compras",
       title: "Compras de Lujo", 
       description: "Explora tiendas exclusivas y centros comerciales de primer nivel.", 
-      icon: <ShoppingBag className="w-10 h-10 text-miami-turquoise" /> 
+      icon: <ShoppingBag className="w-10 h-10 text-miami-turquoise" />,
+      image: "https://images.unsplash.com/photo-1555529771-122e5d9f2341?q=80&w=1587&auto=format&fit=crop"
     },
     { 
+      id: "gastronomia",
       title: "Gastronomía Internacional", 
       description: "Saborea la diversa oferta culinaria con influencias latinas y caribeñas.", 
-      icon: <Utensils className="w-10 h-10 text-miami-turquoise" /> 
+      icon: <Utensils className="w-10 h-10 text-miami-turquoise" />,
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1574&auto=format&fit=crop"
     },
     { 
+      id: "vida-nocturna",
       title: "Vida Nocturna Vibrante", 
       description: "Vive la energía de los mejores clubes y bares de South Beach.", 
-      icon: <Music className="w-10 h-10 text-miami-turquoise" /> 
+      icon: <Music className="w-10 h-10 text-miami-turquoise" />,
+      image: "https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=1664&auto=format&fit=crop"
     }
   ];
   
@@ -108,17 +116,39 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg p-6 hover-up"
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all hover-up cursor-pointer"
+                onClick={() => navigate(`/${item.id}`)}
               >
-                <div className="flex justify-center mb-4">
-                  {item.icon}
+                <div 
+                  className="h-48 bg-cover bg-center relative"
+                  style={{ backgroundImage: `url(${item.image})` }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    <div className="text-white bg-miami-turquoise p-3 rounded-full">
+                      {item.icon}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-center">
-                  {item.description}
-                </p>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-center">
+                    {item.description}
+                  </p>
+                  <div className="mt-4 text-center">
+                    <Button 
+                      variant="outline"
+                      className="text-miami-turquoise border-miami-turquoise hover:bg-miami-turquoise hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/${item.id}`);
+                      }}
+                    >
+                      Explorar
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -126,7 +156,7 @@ const Home = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 miami-gradient text-white">
+      <section className="py-16 bg-gradient-to-r from-miami-turquoise to-miami-coral text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             ¿Estás listo para vivir la experiencia Miami?
@@ -135,7 +165,7 @@ const Home = () => {
             Registra tu visita ahora y obtén recomendaciones personalizadas para aprovechar al máximo tu estancia.
           </p>
           <Button 
-            className="bg-white text-miami-turquoise hover:bg-miami-coral hover:text-white px-8 py-6 text-lg"
+            className="bg-white text-miami-turquoise hover:bg-miami-sand hover:text-miami-coral px-8 py-6 text-lg"
             onClick={() => navigate('/registro')}
           >
             Registrar mi visita

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -51,7 +52,7 @@ const actividadesOpciones = [
   { id: "excursiones", label: "Excursiones y tours" },
 ];
 
-// API URL - this should be an environment variable in production
+// API URL for our server running on port 5000
 const API_URL = 'http://localhost:5000';
 
 const Registro = () => {
@@ -121,7 +122,7 @@ const Registro = () => {
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       toast.error("Error al procesar tu registro", {
-        description: "Por favor intenta nuevamente más tarde.",
+        description: "Por favor verifica que el servidor API esté funcionando en http://localhost:5000",
       });
     } finally {
       setIsSubmitting(false);

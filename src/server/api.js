@@ -7,19 +7,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware - enable CORS for all origins in development
+// Middleware - enable CORS specifically for the frontend
 app.use(cors({
-  origin: '*', // Allow all origins in development
+  origin: 'http://localhost:8080', // Allow only our frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 app.use(bodyParser.json());
 
-// Database connection
+// Database connection with correct phpMyAdmin credentials
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // Update this to your phpMyAdmin username
-  password: '', // Update this to your phpMyAdmin password
+  user: 'root', // Default phpMyAdmin user
+  password: '', // Default empty password
   database: 'miami'
 });
 
