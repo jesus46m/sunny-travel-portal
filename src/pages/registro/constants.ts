@@ -1,3 +1,4 @@
+
 // Define the activities list
 export const actividadesOpciones = [
   { id: "playa", label: "Playa y actividades acuáticas" },
@@ -11,6 +12,17 @@ export const actividadesOpciones = [
 // Use the window location to determine if we're in localhost or on the Lovable preview
 export const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
+// Determine if we're using HTTPS
+export const isHttps = window.location.protocol === 'https:';
+
 // For the preview environment, we need to use a deployed API or configure the backend
-// For now, we'll keep using localhost:5000, but this will only work when running locally
-export const API_URL = 'http://localhost:5000';
+// We use secure HTTPS for production and HTTP only for local development
+export const API_URL = isLocalhost 
+  ? 'http://localhost:5000' 
+  : 'https://api.yourdomain.com'; // Replace with your actual API domain
+
+// Helper function to ensure URLs are always HTTPS (except for localhost)
+export const ensureHttps = (url: string): string => {
+  if (isLocalhost) return url;
+  return url.replace(/^http:\/\//i, 'https://');
+};
