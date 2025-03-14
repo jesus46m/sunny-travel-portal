@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware - enable CORS specifically for the frontend
+// Middleware - enable CORS for both localhost:8080 and the Lovable preview app
 app.use(cors({
-  origin: 'http://localhost:8080', // Allow only our frontend
+  origin: ['http://localhost:8080', /\.lovable\.app$/],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));

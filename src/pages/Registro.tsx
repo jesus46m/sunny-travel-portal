@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -52,8 +51,9 @@ const actividadesOpciones = [
   { id: "excursiones", label: "Excursiones y tours" },
 ];
 
-// API URL for our server running on port 5000
-const API_URL = 'http://localhost:5000';
+// Use the window location to determine if we're in localhost or on the Lovable preview
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_URL = isLocalhost ? 'http://localhost:5000' : 'http://localhost:5000';
 
 const Registro = () => {
   const navigate = useNavigate();
@@ -96,6 +96,8 @@ const Registro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(submissionData),
+        // Adding these options to ensure cookies are sent with request
+        credentials: 'include',
       });
       
       if (!response.ok) {
@@ -122,7 +124,7 @@ const Registro = () => {
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       toast.error("Error al procesar tu registro", {
-        description: "Por favor verifica que el servidor API esté funcionando en http://localhost:5000",
+        description: "Por favor asegúrate de que el servidor API esté funcionando correctamente en http://localhost:5000",
       });
     } finally {
       setIsSubmitting(false);
@@ -210,6 +212,7 @@ const Registro = () => {
                           onSelect={field.onChange}
                           disabled={(date) => date < new Date()}
                           initialFocus
+                          className={cn("p-3 pointer-events-auto")}
                         />
                       </PopoverContent>
                     </Popover>
