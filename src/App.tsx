@@ -11,6 +11,10 @@ import Registro from "./pages/Registro";
 import Contacto from "./pages/Contacto";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Playas from "./pages/Playas";
+import Compras from "./pages/Compras";
+import Gastronomia from "./pages/Gastronomia";
+import VidaNocturna from "./pages/VidaNocturna";
 
 // Setup framer-motion
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +35,10 @@ const App = () => (
               <Route path="/registro" element={<Registro />} />
               <Route path="/contacto" element={<Contacto />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/playas" element={<Playas />} />
+              <Route path="/compras" element={<Compras />} />
+              <Route path="/gastronomia" element={<Gastronomia />} />
+              <Route path="/vida-nocturna" element={<VidaNocturna />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>

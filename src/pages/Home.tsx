@@ -20,29 +20,33 @@ const Home = () => {
       id: "playas",
       title: "Playas de Ensueño", 
       description: "Disfruta de las famosas playas de arena blanca y aguas turquesas.", 
-      icon: <Umbrella className="w-10 h-10 text-miami-turquoise" />,
-      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1664&auto=format&fit=crop"
+      icon: <Umbrella className="w-10 h-10 text-white" />,
+      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1664&auto=format&fit=crop",
+      path: "/playas"
     },
     { 
       id: "compras",
       title: "Compras de Lujo", 
       description: "Explora tiendas exclusivas y centros comerciales de primer nivel.", 
-      icon: <ShoppingBag className="w-10 h-10 text-miami-turquoise" />,
-      image: "https://images.unsplash.com/photo-1555529771-122e5d9f2341?q=80&w=1587&auto=format&fit=crop"
+      icon: <ShoppingBag className="w-10 h-10 text-white" />,
+      image: "https://images.unsplash.com/photo-1555529771-122e5d9f2341?q=80&w=1587&auto=format&fit=crop",
+      path: "/compras"
     },
     { 
       id: "gastronomia",
       title: "Gastronomía Internacional", 
       description: "Saborea la diversa oferta culinaria con influencias latinas y caribeñas.", 
-      icon: <Utensils className="w-10 h-10 text-miami-turquoise" />,
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1574&auto=format&fit=crop"
+      icon: <Utensils className="w-10 h-10 text-white" />,
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1574&auto=format&fit=crop",
+      path: "/gastronomia"
     },
     { 
       id: "vida-nocturna",
       title: "Vida Nocturna Vibrante", 
       description: "Vive la energía de los mejores clubes y bares de South Beach.", 
-      icon: <Music className="w-10 h-10 text-miami-turquoise" />,
-      image: "https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=1664&auto=format&fit=crop"
+      icon: <Music className="w-10 h-10 text-white" />,
+      image: "https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=1664&auto=format&fit=crop",
+      path: "/vida-nocturna"
     }
   ];
   
@@ -116,33 +120,31 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all hover-up cursor-pointer"
-                onClick={() => navigate(`/${item.id}`)}
+                className="rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer h-96"
+                onClick={() => navigate(item.path)}
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url(${item.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
               >
-                <div 
-                  className="h-48 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${item.image})` }}
-                >
-                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                    <div className="text-white bg-miami-turquoise p-3 rounded-full">
-                      {item.icon}
-                    </div>
+                <div className="h-full flex flex-col justify-between p-6">
+                  <div className="bg-miami-turquoise p-3 rounded-full w-fit self-center">
+                    {item.icon}
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 text-center">
-                    {item.description}
-                  </p>
-                  <div className="mt-4 text-center">
+                  
+                  <div className="mt-auto text-white">
+                    <h3 className="text-2xl font-bold mb-2 text-center">
+                      {item.title}
+                    </h3>
+                    <p className="text-center mb-4 text-white/90">
+                      {item.description}
+                    </p>
                     <Button 
-                      variant="outline"
-                      className="text-miami-turquoise border-miami-turquoise hover:bg-miami-turquoise hover:text-white"
+                      className="w-full bg-white/20 hover:bg-white backdrop-blur-sm text-white border border-white hover:text-miami-turquoise"
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(`/${item.id}`);
+                        navigate(item.path);
                       }}
                     >
                       Explorar
