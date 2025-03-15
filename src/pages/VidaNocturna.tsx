@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ChevronDown, Star, MapPin, Clock, Music, Cocktail } from "lucide-react";
+import { ArrowLeft, ChevronDown, Star, MapPin, Clock, Music, Wine } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -60,7 +59,6 @@ const VidaNocturna = () => {
     }
   ];
 
-  // Función para mostrar las estrellas según la puntuación
   const renderEstrellas = (puntuacion: number) => {
     const estrellas = [];
     const puntuacionRedondeada = Math.round(puntuacion);
@@ -80,7 +78,6 @@ const VidaNocturna = () => {
   return (
     <div className="pt-20 pb-12 bg-miami-sand min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-8">
           <Button 
             variant="ghost" 
@@ -103,7 +100,6 @@ const VidaNocturna = () => {
           </div>
         </div>
         
-        {/* Hero image */}
         <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
           <img 
             src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1430&auto=format&fit=crop" 
@@ -121,7 +117,6 @@ const VidaNocturna = () => {
           </div>
         </div>
         
-        {/* Clubs grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {clubes.map((club, index) => (
             <motion.div
@@ -189,7 +184,7 @@ const VidaNocturna = () => {
                         <span>Música: EDM, Hip-Hop, Reggaeton</span>
                       </div>
                       <div className="flex items-center">
-                        <Cocktail className="w-5 h-5 text-miami-turquoise mr-2" />
+                        <Wine className="w-5 h-5 text-miami-turquoise mr-2" />
                         <span>Precio bebidas: $$$</span>
                       </div>
                     </div>
@@ -200,7 +195,6 @@ const VidaNocturna = () => {
           ))}
         </div>
         
-        {/* Consejos section */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
             <ChevronDown className="w-6 h-6 text-miami-turquoise mr-2" />
@@ -223,7 +217,6 @@ const VidaNocturna = () => {
           </div>
         </div>
         
-        {/* CTA Section */}
         <div className="bg-gradient-to-r from-miami-turquoise to-miami-coral rounded-xl shadow-lg p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">¿Listo para vivir la noche de Miami?</h2>
           <p className="mb-6">Planifica tu visita y descubre la energía de la vida nocturna de Miami</p>
