@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
@@ -100,7 +99,7 @@ const Gastronomia = () => {
       tipo: "cubana",
       ubicacion: "971 SW 8th St, Miami",
       descripcion: "Restaurante cubano y bar de cócteles dirigido por el famoso barman Julio Cabrera, con música en vivo y ambiente auténtico.",
-      imagen: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1574&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1514537099923-4c9f65c87583?q=80&w=1574&auto=format&fit=crop",
       precio: "$$$",
       puntuacion: 4.8,
       telefono: "+1 (786) 615-4379",
@@ -160,12 +159,10 @@ const Gastronomia = () => {
     { value: "mexicana", label: "Mexicana" }
   ];
 
-  // Función para filtrar restaurantes por tipo de cocina
   const restaurantesFiltrados = cuisineFilter === "todos" 
     ? restaurantes 
     : restaurantes.filter(r => r.tipo === cuisineFilter);
 
-  // Función para mostrar las estrellas según la puntuación
   const renderEstrellas = (puntuacion: number) => {
     const estrellas = [];
     const puntuacionRedondeada = Math.round(puntuacion);
@@ -182,10 +179,9 @@ const Gastronomia = () => {
     return <div className="flex space-x-1">{estrellas}</div>;
   };
   
-  // Función para renderizar indicador de precio
   const renderPrecio = (precio: string) => {
     const dolares = [];
-    const maxDolares = 4; // Asumimos que el máximo es $$$$
+    const maxDolares = 4;
     
     for (let i = 1; i <= maxDolares; i++) {
       dolares.push(
@@ -202,7 +198,6 @@ const Gastronomia = () => {
   return (
     <div className="pt-20 pb-12 bg-miami-sand min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-8">
           <Button 
             variant="ghost" 
@@ -225,7 +220,6 @@ const Gastronomia = () => {
           </div>
         </div>
         
-        {/* Hero image */}
         <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
           <img 
             src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1574&auto=format&fit=crop" 
@@ -243,7 +237,6 @@ const Gastronomia = () => {
           </div>
         </div>
         
-        {/* Filter section */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -271,7 +264,6 @@ const Gastronomia = () => {
           </div>
         </div>
         
-        {/* Restaurants grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {restaurantesFiltrados.map((restaurante, index) => (
             <motion.div
@@ -370,7 +362,6 @@ const Gastronomia = () => {
           ))}
         </div>
         
-        {/* Food culture section */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             La cultura gastronómica de Miami
@@ -415,7 +406,6 @@ const Gastronomia = () => {
           </div>
         </div>
         
-        {/* CTA Section */}
         <div className="bg-gradient-to-r from-miami-turquoise to-miami-coral rounded-xl shadow-lg p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-4">¿Listo para una aventura gastronómica en Miami?</h2>
           <p className="mb-6">Planifica tu visita y prepara tu paladar para sabores inolvidables</p>

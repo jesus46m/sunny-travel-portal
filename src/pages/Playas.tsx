@@ -30,7 +30,7 @@ const Playas = () => {
       nombre: "Bill Baggs Cape",
       ubicacion: "Key Biscayne",
       descripcion: "Hogar del famoso faro de Cape Florida, ofrece aguas cristalinas y excelentes oportunidades para practicar esnórquel.",
-      imagen: "https://images.unsplash.com/photo-1624035371733-950c8c7536bd?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1484507175567-a114f764f78b?q=80&w=1470&auto=format&fit=crop",
       puntuacion: 4.7,
       caracteristicas: ["Snorkel", "Ciclismo", "Parque estatal", "Histórico"]
     },
@@ -38,7 +38,7 @@ const Playas = () => {
       nombre: "Crandon Park",
       ubicacion: "Key Biscayne",
       descripcion: "Playa familiar con aguas tranquilas y poco profundas, perfecta para nadar y hacer picnic.",
-      imagen: "https://images.unsplash.com/photo-1624035371733-950c8c7536bd?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1470&auto=format&fit=crop",
       puntuacion: 4.5,
       caracteristicas: ["Familiar", "Picnic", "Canchas de tenis", "Aguas tranquilas"]
     },

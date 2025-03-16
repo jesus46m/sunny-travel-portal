@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShoppingBag, DollarSign, MapPin, Clock, Tag, Info } from "lucide-react";
