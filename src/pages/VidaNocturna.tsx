@@ -22,7 +22,7 @@ const VidaNocturna = () => {
       nombre: "E11EVEN",
       ubicacion: "Downtown Miami",
       descripcion: "Club abierto las 24 horas que combina música electrónica, espectáculos en vivo y una experiencia gastronómica de alta gama.",
-      imagen: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1470&auto=format&fit=crop",
       puntuacion: 4.8,
       caracteristicas: ["24 Horas", "Espectáculos", "Restaurante", "Terraza"]
     },
@@ -38,7 +38,7 @@ const VidaNocturna = () => {
       nombre: "Basement Miami",
       ubicacion: "Miami Beach",
       descripcion: "Club único que incluye una pista de hielo y una pista de bolos, además de un club con música underground.",
-      imagen: "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1430&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1519671017201-2b5f6f7c70e3?q=80&w=1430&auto=format&fit=crop",
       puntuacion: 4.6,
       caracteristicas: ["Pista de hielo", "Bolos", "Música alternativa", "Experiencia multisensorial"]
     },

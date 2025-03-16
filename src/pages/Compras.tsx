@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShoppingBag, DollarSign, MapPin, Clock, Tag, Info } from "lucide-react";
@@ -54,7 +53,7 @@ const Compras = () => {
         nombre: "Aventura Mall",
         ubicacion: "19501 Biscayne Blvd, Aventura",
         descripcion: "Uno de los centros comerciales más grandes de EE.UU. con una mezcla de tiendas de lujo y marcas accesibles.",
-        imagen: "https://images.unsplash.com/photo-1576856497732-018e1d98ee0f?q=80&w=1374&auto=format&fit=crop",
+        imagen: "https://images.unsplash.com/photo-1582037928785-98f0c6d424e3?q=80&w=1374&auto=format&fit=crop",
         horario: "10:00 AM - 9:00 PM",
         rango_precio: "$$ - $$$",
         sitio_web: "https://www.aventuramall.com",
@@ -74,7 +73,7 @@ const Compras = () => {
         nombre: "Dolphin Mall",
         ubicacion: "11401 NW 12th St, Miami",
         descripcion: "Centro comercial tipo outlet con más de 240 tiendas, restaurantes y opciones de entretenimiento.",
-        imagen: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1470&auto=format&fit=crop",
+        imagen: "https://images.unsplash.com/photo-1581316009585-5ff9976c965e?q=80&w=1470&auto=format&fit=crop",
         horario: "10:00 AM - 9:00 PM",
         rango_precio: "$$ - $$$",
         sitio_web: "https://www.dolphinmall.com",
@@ -148,7 +147,7 @@ const Compras = () => {
         {/* Hero image */}
         <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
           <img 
-            src="https://images.unsplash.com/photo-1567958451986-2de427a435a0?q=80&w=1374&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=1470&auto=format&fit=crop" 
             alt="Compras en Miami" 
             className="w-full h-full object-cover"
           />

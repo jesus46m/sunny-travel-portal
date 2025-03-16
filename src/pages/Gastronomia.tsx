@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
@@ -67,7 +68,7 @@ const Gastronomia = () => {
       tipo: "cubana",
       ubicacion: "971 SW 8th St, Miami",
       descripcion: "Restaurante cubano y bar de cócteles dirigido por el famoso barman Julio Cabrera, con música en vivo y ambiente auténtico.",
-      imagen: "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1470&auto=format&fit=crop",
       precio: "$$$",
       puntuacion: 4.8,
       telefono: "+1 (786) 615-4379",
