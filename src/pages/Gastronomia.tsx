@@ -20,7 +20,7 @@ const Gastronomia = () => {
       tipo: "cubana",
       ubicacion: "3555 SW 8th St, Miami",
       descripcion: "El restaurante cubano más famoso de Miami, conocido por su auténtica comida y ambiente animado.",
-      imagen: "https://images.unsplash.com/photo-1600891722990-398f9853692d?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1554679665-f5537f187268?q=80&w=1287&auto=format&fit=crop",
       precio: "$$",
       puntuacion: 4.5,
       telefono: "+1 (305) 444-0240",
@@ -32,7 +32,7 @@ const Gastronomia = () => {
       tipo: "mariscos",
       ubicacion: "11 Washington Ave, Miami Beach",
       descripcion: "Restaurante icónico famoso por sus cangrejos de piedra y otros mariscos frescos.",
-      imagen: "https://images.unsplash.com/photo-1625936625413-2895ef999a19?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1579631542720-3a87824835cd?q=80&w=1287&auto=format&fit=crop",
       precio: "$$$$",
       puntuacion: 4.7,
       telefono: "+1 (305) 673-0365",
@@ -44,7 +44,7 @@ const Gastronomia = () => {
       tipo: "asiática",
       ubicacion: "251 NW 25th St, Miami",
       descripcion: "Restaurante de cocina asiática a la parrilla con un ambiente moderno y platos innovadores.",
-      imagen: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=1470&auto=format&fit=crop",
       precio: "$$$",
       puntuacion: 4.6,
       telefono: "+1 (786) 577-0150",
@@ -56,7 +56,7 @@ const Gastronomia = () => {
       tipo: "mexicana",
       ubicacion: "2300 NW 2nd Ave, Miami",
       descripcion: "Taquería popular con tacos auténticos, ingredientes frescos y un ambiente informal.",
-      imagen: "https://images.unsplash.com/photo-1559947851-15b4aed94035?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=1380&auto=format&fit=crop",
       precio: "$",
       puntuacion: 4.4,
       telefono: "+1 (305) 573-8226",
@@ -68,7 +68,7 @@ const Gastronomia = () => {
       tipo: "cubana",
       ubicacion: "971 SW 8th St, Miami",
       descripcion: "Restaurante cubano y bar de cócteles dirigido por el famoso barman Julio Cabrera, con música en vivo y ambiente auténtico.",
-      imagen: "https://images.unsplash.com/photo-1506344958701-1a297c4b7655?q=80&w=1740&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1470&auto=format&fit=crop",
       precio: "$$$",
       puntuacion: 4.8,
       telefono: "+1 (786) 615-4379",
@@ -80,7 +80,7 @@ const Gastronomia = () => {
       tipo: "japonesa",
       ubicacion: "270 Biscayne Blvd Way, Miami",
       descripcion: "Restaurante japonés de lujo con vistas al río Miami, conocido por su sushi y platos a la parrilla.",
-      imagen: "https://images.unsplash.com/photo-1579456876936-517dacd5d8a8?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1525&auto=format&fit=crop",
       precio: "$$$$",
       puntuacion: 4.9,
       telefono: "+1 (305) 577-0277",
@@ -143,7 +143,7 @@ const Gastronomia = () => {
         {/* Hero image */}
         <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
           <img 
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1470&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1470&auto=format&fit=crop" 
             alt="Gastronomía en Miami" 
             className="w-full h-full object-cover"
           />
