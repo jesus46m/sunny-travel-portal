@@ -68,7 +68,7 @@ const Gastronomia = () => {
       tipo: "cubana",
       ubicacion: "971 SW 8th St, Miami",
       descripcion: "Restaurante cubano y bar de cócteles dirigido por el famoso barman Julio Cabrera, con música en vivo y ambiente auténtico.",
-      imagen: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1470&auto=format&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1506344958701-1a297c4b7655?q=80&w=1740&auto=format&fit=crop",
       precio: "$$$",
       puntuacion: 4.8,
       telefono: "+1 (786) 615-4379",
@@ -143,7 +143,7 @@ const Gastronomia = () => {
         {/* Hero image */}
         <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
           <img 
-            src="https://images.unsplash.com/photo-1517248135469-4fe796d42e23?q=80&w=1470&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1470&auto=format&fit=crop" 
             alt="Gastronomía en Miami" 
             className="w-full h-full object-cover"
           />
