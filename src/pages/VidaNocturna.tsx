@@ -12,51 +12,51 @@ const VidaNocturna = () => {
   const clubes = [
     {
       nombre: "LIV Miami",
-      ubicacion: "South Beach",
+      ubicacion: "Miami, Florida",
       descripcion: "Uno de los clubes nocturnos más famosos de Miami, conocido por su ambiente de lujo y sus destacados DJs internacionales.",
       imagen: "https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=1664&auto=format&fit=crop",
       puntuacion: 4.7,
       caracteristicas: ["DJs Internacionales", "Ambiente VIP", "Servicio de botella", "Celebridades"]
     },
     {
-      nombre: "E11EVEN",
-      ubicacion: "Downtown Miami",
-      descripcion: "Club abierto las 24 horas que combina música electrónica, espectáculos en vivo y una experiencia gastronómica de alta gama.",
-      imagen: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1470&auto=format&fit=crop",
+      nombre: "Marquee",
+      ubicacion: "Las Vegas, Nevada",
+      descripcion: "Club icónico de Las Vegas con increíbles espectáculos de luces, DJs de clase mundial y cabinas VIP de lujo.",
+      imagen: "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1430&auto=format&fit=crop",
       puntuacion: 4.8,
-      caracteristicas: ["24 Horas", "Espectáculos", "Restaurante", "Terraza"]
+      caracteristicas: ["Pool party", "DJs famosos", "Ambiente exclusivo", "Sistema de luces"]
     },
     {
-      nombre: "Story Nightclub",
-      ubicacion: "South Beach",
-      descripcion: "Club de alta energía con una impresionante tecnología audiovisual y los mejores DJs electrónicos del mundo.",
+      nombre: "1 OAK",
+      ubicacion: "Nueva York, NY",
+      descripcion: "Club exclusivo en Manhattan conocido por atraer a celebridades y por su ambiente sofisticado y elegante.",
       imagen: "https://images.unsplash.com/photo-1485872299829-c673f5194813?q=80&w=1460&auto=format&fit=crop",
-      puntuacion: 4.5,
-      caracteristicas: ["Música Electrónica", "Sistema de sonido avanzado", "Pista de baile", "Ambiente joven"]
-    },
-    {
-      nombre: "Basement Miami",
-      ubicacion: "Miami Beach",
-      descripcion: "Club único que incluye una pista de hielo y una pista de bolos, además de un club con música underground.",
-      imagen: "https://images.unsplash.com/photo-1519671017201-2b5f6f7c70e3?q=80&w=1430&auto=format&fit=crop",
       puntuacion: 4.6,
-      caracteristicas: ["Pista de hielo", "Bolos", "Música alternativa", "Experiencia multisensorial"]
+      caracteristicas: ["Celebridades", "Diseño elegante", "Coctelería premium", "Hip-hop"]
     },
     {
-      nombre: "Ball & Chain",
-      ubicacion: "Little Havana",
-      descripcion: "Lugar histórico con música latina en vivo, salsa y un ambiente auténticamente cubano en el corazón de Little Havana.",
-      imagen: "https://images.unsplash.com/photo-1507833423370-a126b89d394b?q=80&w=1490&auto=format&fit=crop",
-      puntuacion: 4.4,
-      caracteristicas: ["Música latina", "Historia", "Mojitos", "Pista de baile exterior"]
+      nombre: "Exchange LA",
+      ubicacion: "Los Ángeles, California",
+      descripcion: "Ubicado en el histórico edificio de la Bolsa de Valores, es el epicentro de la música electrónica en Los Ángeles.",
+      imagen: "https://images.unsplash.com/photo-1519671017201-2b5f6f7c70e3?q=80&w=1430&auto=format&fit=crop",
+      puntuacion: 4.5,
+      caracteristicas: ["Edificio histórico", "Música EDM", "Sistema de sonido", "Luz y láser"]
     },
     {
-      nombre: "Club Space",
-      ubicacion: "Downtown Miami",
-      descripcion: "Legendario club con sesiones maratónicas de música electrónica y una famosa terraza donde bailar bajo el amanecer de Miami.",
+      nombre: "The Continental Club",
+      ubicacion: "Austin, Texas",
+      descripcion: "Legendario club de música en vivo donde se puede disfrutar de auténtico blues, rock y country tejano.",
+      imagen: "https://images.unsplash.com/photo-1483393458019-411bc6bd104e?q=80&w=1471&auto=format&fit=crop",
+      puntuacion: 4.7,
+      caracteristicas: ["Música en vivo", "Blues", "Rock", "Historia musical"]
+    },
+    {
+      nombre: "Foundation Nightclub",
+      ubicacion: "Seattle, Washington",
+      descripcion: "Principal club de música electrónica de Seattle, con un sistema de sonido de primera categoría y atmósfera única.",
       imagen: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1374&auto=format&fit=crop",
-      puntuacion: 4.9,
-      caracteristicas: ["Terraza", "Música techno", "Sesiones largas", "Amanecer"]
+      puntuacion: 4.5,
+      caracteristicas: ["Bass music", "Dubstep", "Escena local", "Luces LED"]
     }
   ];
 
@@ -77,12 +77,13 @@ const VidaNocturna = () => {
   };
 
   return (
-    <div className="pt-20 pb-12 bg-miami-sand min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-20 pb-12 min-h-screen bg-[url('https://images.unsplash.com/photo-1525971977657-e47c43b62368?q=80&w=1770&auto=format&fit=crop')] bg-fixed bg-cover bg-center before:content-[''] before:absolute before:inset-0 before:bg-black/60 before:z-[-1] relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 animate-pulse z-[-1]"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-8">
           <Button 
             variant="ghost" 
-            className="mb-4 flex items-center text-gray-600 hover:text-miami-turquoise"
+            className="mb-4 flex items-center text-white hover:text-miami-turquoise"
             onClick={() => navigate('/')}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -90,29 +91,34 @@ const VidaNocturna = () => {
           </Button>
           
           <div className="text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-              Vida Nocturna en Miami
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Vida Nocturna en Estados Unidos
             </h1>
             <div className="w-24 h-1 bg-miami-turquoise mx-auto mb-6"></div>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Descubre la vibrante escena de clubes y bares de Miami, desde exclusivos clubs de South Beach 
-              hasta los auténticos bares con sabor latino de Little Havana.
+            <p className="text-xl text-white max-w-3xl mx-auto">
+              Descubre la vibrante escena de clubes y bares de Estados Unidos, desde exclusivos clubes de Las Vegas 
+              hasta los auténticos bares de jazz en Nueva Orleans y los rascacielos de Nueva York.
             </p>
           </div>
         </div>
         
-        <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12">
+        {/* Spinner animation */}
+        <div className="flex justify-center mb-12">
+          <div className="w-16 h-16 border-4 border-miami-coral border-t-miami-turquoise rounded-full animate-spin"></div>
+        </div>
+        
+        <div className="relative h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden mb-12 backdrop-blur-sm bg-white/10 p-2">
           <img 
-            src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=1430&auto=format&fit=crop" 
-            alt="Vida nocturna de Miami" 
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1470&auto=format&fit=crop" 
+            alt="Vida nocturna en Estados Unidos" 
+            className="w-full h-full object-cover rounded-lg"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
             <div className="text-white max-w-2xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">La Ciudad que Nunca Duerme</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">La Nación que Nunca Duerme</h2>
               <p className="text-lg opacity-90">
-                Miami ofrece una de las escenas nocturnas más vibrantes y diversas de Estados Unidos, 
-                con opciones para todos los gustos y presupuestos.
+                Estados Unidos ofrece una de las escenas nocturnas más diversas del mundo, 
+                con estilos únicos en cada ciudad y para todos los gustos.
               </p>
             </div>
           </div>
@@ -125,7 +131,7 @@ const VidaNocturna = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all"
+              className="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all border border-white/20"
             >
               <div className="relative h-56">
                 <img 
@@ -141,20 +147,20 @@ const VidaNocturna = () => {
               
               <div className="p-6">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900">{club.nombre}</h3>
-                  <div className="flex items-center text-gray-500">
+                  <h3 className="text-xl font-bold text-white">{club.nombre}</h3>
+                  <div className="flex items-center text-white/80">
                     <MapPin className="w-4 h-4 mr-1" />
                     <span className="text-sm">{club.ubicacion}</span>
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-4">{club.descripcion}</p>
+                <p className="text-white/90 mb-4">{club.descripcion}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {club.caracteristicas.map((caract, i) => (
                     <span 
                       key={i} 
-                      className="bg-miami-sand text-gray-800 text-xs px-3 py-1 rounded-full"
+                      className="bg-miami-turquoise/20 text-white text-xs px-3 py-1 rounded-full border border-miami-turquoise/30"
                     >
                       {caract}
                     </span>
@@ -173,20 +179,20 @@ const VidaNocturna = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.3 }}
-                    className="mt-4 pt-4 border-t border-gray-200"
+                    className="mt-4 pt-4 border-t border-white/20"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-3 text-white/90">
                       <div className="flex items-center">
                         <Clock className="w-5 h-5 text-miami-turquoise mr-2" />
-                        <span>Horario: 11PM - 5AM (Jueves a Domingo)</span>
+                        <span>Horario: 10PM - 4AM (Jueves a Domingo)</span>
                       </div>
                       <div className="flex items-center">
                         <Music className="w-5 h-5 text-miami-turquoise mr-2" />
-                        <span>Música: EDM, Hip-Hop, Reggaeton</span>
+                        <span>Música: Varía según la ciudad y el club</span>
                       </div>
                       <div className="flex items-center">
                         <Wine className="w-5 h-5 text-miami-turquoise mr-2" />
-                        <span>Precio bebidas: $$$</span>
+                        <span>Precio bebidas: $$ - $$$$</span>
                       </div>
                     </div>
                   </motion.div>
@@ -196,31 +202,31 @@ const VidaNocturna = () => {
           ))}
         </div>
         
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-8 mb-12 border border-white/20">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
             <ChevronDown className="w-6 h-6 text-miami-turquoise mr-2" />
-            Consejos para disfrutar la vida nocturna en Miami
+            Consejos para disfrutar la vida nocturna en Estados Unidos
           </h2>
           
-          <div className="space-y-4">
-            <p className="text-gray-700">
-              <span className="font-semibold">👔 Código de vestimenta:</span> Los clubes más exclusivos tienen un código de vestimenta estricto. Viste elegante para evitar problemas en la entrada.
+          <div className="space-y-4 text-white/90">
+            <p>
+              <span className="font-semibold">👔 Código de vestimenta:</span> Varía enormemente según la ciudad y el lugar. En Las Vegas y Nueva York, los clubes de lujo tienen códigos estrictos, mientras que otras ciudades son más relajadas.
             </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">⏰ Horarios:</span> La fiesta comienza tarde en Miami. La mayoría de los clubes no se llenan hasta después de la medianoche.
+            <p>
+              <span className="font-semibold">⏰ Horarios:</span> La hora de cierre varía según las leyes locales. En ciudades como Nueva York, los bares cierran a las 4 am, mientras que en otras ciudades pueden cerrar a las 2 am.
             </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">💰 Reservaciones:</span> Para una mejor experiencia, considera reservar una mesa con anticipación, especialmente durante la temporada alta.
+            <p>
+              <span className="font-semibold">💰 Precios:</span> El costo de la vida nocturna varía considerablemente. Las ciudades como Las Vegas, Nueva York y Miami tienden a ser más caras.
             </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">🚕 Transporte:</span> Utiliza servicios de rideshare o taxis para moverte con seguridad. Evita conducir si has consumido alcohol.
+            <p>
+              <span className="font-semibold">🚕 Transporte:</span> Planifica cómo regresar al hotel. Utiliza servicios de rideshare o taxis para moverte con seguridad.
             </p>
           </div>
         </div>
         
         <div className="bg-gradient-to-r from-miami-turquoise to-miami-coral rounded-xl shadow-lg p-8 text-white text-center">
-          <h2 className="text-2xl font-bold mb-4">¿Listo para vivir la noche de Miami?</h2>
-          <p className="mb-6">Planifica tu visita y descubre la energía de la vida nocturna de Miami</p>
+          <h2 className="text-2xl font-bold mb-4">¿Listo para vivir la noche americana?</h2>
+          <p className="mb-6">Planifica tu visita y descubre la energía de la vida nocturna en Estados Unidos</p>
           <Button 
             className="bg-white text-miami-turquoise hover:bg-miami-sand hover:text-miami-coral"
             onClick={() => navigate('/registro')}
