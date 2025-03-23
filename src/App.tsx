@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import StateDetails from "./pages/StateDetails";
 import Playas from "./pages/Playas";
 import Gastronomia from "./pages/Gastronomia";
 import VidaNocturna from "./pages/VidaNocturna";
@@ -24,6 +25,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/state/:stateId" element={<StateDetails />} />
           <Route path="/playas" element={<Playas />} />
           <Route path="/gastronomia" element={<Gastronomia />} />
           <Route path="/vida-nocturna" element={<VidaNocturna />} />

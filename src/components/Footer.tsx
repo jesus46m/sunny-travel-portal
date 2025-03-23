@@ -13,15 +13,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2 text-miami-coral" />
-                <span>Miami Beach, FL 33139, USA</span>
+                <span>New York, NY 10001, USA</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-miami-coral" />
-                <span>+1 (305) 555-1234</span>
+                <span>+1 (555) 123-4567</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-miami-coral" />
-                <span>info@miamitravelportal.com</span>
+                <span>info@ustravel.com</span>
               </li>
             </ul>
           </div>
@@ -64,7 +64,7 @@ const Footer = () => {
               </div>
             </div>
             <h3 className="text-lg font-semibold mb-2 text-miami-turquoise">Newsletter</h3>
-            <p className="text-sm text-gray-400 mb-2">Suscríbete para recibir las últimas noticias</p>
+            <p className="text-sm text-gray-400 mb-2">Suscríbete para recibir las últimas noticias de viajes</p>
             <div className="flex">
               <input 
                 type="email" 
@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} Miami Travel Portal. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} US Travel Portal. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
