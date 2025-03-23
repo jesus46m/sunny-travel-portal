@@ -18,6 +18,7 @@ export type Database = {
           fecha_visita: string
           id: string
           nombre: string
+          user_id: string | null
         }
         Insert: {
           actividades: string
@@ -27,6 +28,7 @@ export type Database = {
           fecha_visita: string
           id?: string
           nombre: string
+          user_id?: string | null
         }
         Update: {
           actividades?: string
@@ -36,6 +38,7 @@ export type Database = {
           fecha_visita?: string
           id?: string
           nombre?: string
+          user_id?: string | null
         }
         Relationships: []
       }

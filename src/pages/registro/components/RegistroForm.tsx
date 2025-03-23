@@ -13,17 +13,19 @@ import { DatePickerField } from "./DatePickerField";
 import { ActivityCheckboxes } from "./ActivityCheckboxes";
 import { formSchema, RegistroFormValues } from "../schema";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 export const RegistroForm = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { user } = useAuth();
 
   // Initialize form
   const form = useForm<RegistroFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nombre: "",
-      email: "",
+      nombre: user?.user_metadata?.nombre || "",
+      email: user?.email || "",
       actividades: [],
       comentarios: "",
     },
@@ -45,7 +47,8 @@ export const RegistroForm = () => {
         email: data.email,
         fecha_visita: formattedDate,
         actividades: JSON.stringify(data.actividades),
-        comentarios: data.comentarios || null
+        comentarios: data.comentarios || null,
+        user_id: user?.id || null
       };
       
       console.log('Submitting data to Supabase:', submissionData);
@@ -70,9 +73,13 @@ export const RegistroForm = () => {
       // Reset form
       form.reset();
       
-      // Redirect to home page after short delay
+      // Redirect to appropriate page based on user auth status
       setTimeout(() => {
-        navigate("/");
+        if (user) {
+          navigate("/mis-visitas");
+        } else {
+          navigate("/");
+        }
       }, 2000);
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
