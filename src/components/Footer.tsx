@@ -52,15 +52,16 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-miami-turquoise">Síguenos</h3>
             <div className="flex space-x-4 mb-6">
-              <a href="#" className="hover:text-miami-coral transition-colors">
+              {/* Changed anchor tags to plain divs to avoid router context issues */}
+              <div className="hover:text-miami-coral transition-colors cursor-pointer">
                 <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="hover:text-miami-coral transition-colors">
+              </div>
+              <div className="hover:text-miami-coral transition-colors cursor-pointer">
                 <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="hover:text-miami-coral transition-colors">
+              </div>
+              <div className="hover:text-miami-coral transition-colors cursor-pointer">
                 <Twitter className="h-6 w-6" />
-              </a>
+              </div>
             </div>
             <h3 className="text-lg font-semibold mb-2 text-miami-turquoise">Newsletter</h3>
             <p className="text-sm text-gray-400 mb-2">Suscríbete para recibir las últimas noticias</p>
