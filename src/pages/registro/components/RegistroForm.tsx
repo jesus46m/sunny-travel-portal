@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { DatePickerField } from "./DatePickerField";
 import { ActivityCheckboxes } from "./ActivityCheckboxes";
 import { formSchema, RegistroFormValues } from "../schema";
-import { API_URL } from "../constants";
+import { supabase } from "@/integrations/supabase/client";
 
 export const RegistroForm = () => {
   const navigate = useNavigate();
@@ -36,36 +36,31 @@ export const RegistroForm = () => {
     try {
       console.log('Preparing to submit form data:', data);
       
-      // Format the date for MySQL (YYYY-MM-DD)
+      // Format the date for PostgreSQL (YYYY-MM-DD)
       const formattedDate = format(data.fecha_visita, 'yyyy-MM-dd');
       
-      // Prepare data for submission
+      // Prepare data for submission to Supabase
       const submissionData = {
-        ...data,
-        fecha_visita: formattedDate
+        nombre: data.nombre,
+        email: data.email,
+        fecha_visita: formattedDate,
+        actividades: JSON.stringify(data.actividades),
+        comentarios: data.comentarios || null
       };
       
-      console.log('Submitting data to API:', submissionData);
-      console.log('API URL:', `${API_URL}/api/registrar-visita`);
+      console.log('Submitting data to Supabase:', submissionData);
       
-      // Send data to the API
-      const response = await fetch(`${API_URL}/api/registrar-visita`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submissionData),
-        // Removing credentials option that might be causing issues in the preview environment
-      });
+      // Insert data into the visitas table using Supabase
+      const { error } = await supabase
+        .from('visitas')
+        .insert(submissionData);
       
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        console.error('API error response:', errorData);
-        throw new Error(errorData?.error || `Error: ${response.status} ${response.statusText}`);
+      if (error) {
+        console.error('Supabase error:', error);
+        throw new Error(error.message || 'Error al guardar el registro');
       }
       
-      const result = await response.json();
-      console.log('API success response:', result);
+      console.log('Registration successful');
       
       // Show success message
       toast.success("¡Registro completado con éxito!", {
@@ -82,7 +77,7 @@ export const RegistroForm = () => {
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
       toast.error("Error al procesar tu registro", {
-        description: "Por favor asegúrate de que el servidor esté funcionando correctamente. Si estás usando la versión de vista previa, necesitarás ejecutar el servidor localmente.",
+        description: "Por favor intenta nuevamente más tarde o contacta con soporte técnico.",
       });
     } finally {
       setIsSubmitting(false);

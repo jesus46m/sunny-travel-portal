@@ -6,17 +6,15 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { Loader2 } from "lucide-react";
-
-// API URL - change this if your server is running on a different port
-const API_URL = 'http://localhost:5000/api';
+import { supabase } from "@/integrations/supabase/client";
 
 // Types
 interface Visita {
-  id: number;
+  id: string;
   nombre: string;
   email: string;
   fecha_visita: string;
-  actividades: string[];
+  actividades: string; // JSON string that we'll parse
   comentarios: string | null;
   fecha_registro: string;
 }
@@ -29,17 +27,20 @@ const Admin = () => {
   useEffect(() => {
     const fetchVisitas = async () => {
       try {
-        const response = await fetch(`${API_URL}/visitas`);
+        // Fetch data from Supabase
+        const { data, error } = await supabase
+          .from('visitas')
+          .select('*')
+          .order('fecha_registro', { ascending: false });
         
-        if (!response.ok) {
-          throw new Error('Error al cargar los datos');
+        if (error) {
+          throw new Error(error.message);
         }
         
-        const data = await response.json();
-        setVisitas(data);
+        setVisitas(data || []);
       } catch (err) {
         console.error('Error fetching data:', err);
-        setError('No se pudieron cargar los datos. Verifica la conexión al servidor.');
+        setError('No se pudieron cargar los datos. Verifica la conexión a Supabase.');
       } finally {
         setLoading(false);
       }
@@ -56,6 +57,16 @@ const Admin = () => {
   const formatDateTime = (dateTimeString: string) => {
     const date = new Date(dateTimeString);
     return format(date, 'dd/MM/yyyy HH:mm', { locale: es });
+  };
+
+  // Parse the JSON string of activities and get the labels
+  const getActividades = (actividadesJSON: string): string[] => {
+    try {
+      return JSON.parse(actividadesJSON);
+    } catch (e) {
+      console.error('Error parsing actividades JSON:', e);
+      return [];
+    }
   };
 
   const getActivityLabel = (activityId: string) => {
@@ -110,13 +121,13 @@ const Admin = () => {
                 <TableBody>
                   {visitas.map((visita) => (
                     <TableRow key={visita.id}>
-                      <TableCell>{visita.id}</TableCell>
+                      <TableCell>{visita.id.substring(0, 8)}...</TableCell>
                       <TableCell className="font-medium">{visita.nombre}</TableCell>
                       <TableCell>{visita.email}</TableCell>
                       <TableCell>{formatDate(visita.fecha_visita)}</TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
-                          {visita.actividades.map((actividad) => (
+                          {getActividades(visita.actividades).map((actividad) => (
                             <Badge key={actividad} variant="outline" className="bg-miami-sand text-gray-800">
                               {getActivityLabel(actividad)}
                             </Badge>
