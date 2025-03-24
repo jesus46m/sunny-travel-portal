@@ -11,6 +11,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
+import USAMap from "@/components/USAMap";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const Home = () => {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 usa-futuristic-bg">
       {/* Hero Section */}
       <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1932&auto=format&fit=crop)" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -93,11 +94,11 @@ const Home = () => {
                 Explora los 50 estados, desde sus playas paradisíacas hasta sus imponentes montañas y vibrantes ciudades
               </p>
               
-              <div className="bg-white p-4 rounded-lg shadow-lg max-w-2xl mx-auto mb-8">
+              <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg shadow-lg max-w-2xl mx-auto mb-8 glass-card">
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex-grow">
                     <Select onValueChange={handleStateSelect} value={selectedState}>
-                      <SelectTrigger className="w-full h-12">
+                      <SelectTrigger className="w-full h-12 bg-white/20 text-white border-white/30">
                         <SelectValue placeholder="Selecciona un estado" />
                       </SelectTrigger>
                       <SelectContent>
@@ -110,7 +111,7 @@ const Home = () => {
                     </Select>
                   </div>
                   <Button 
-                    className="bg-miami-coral hover:bg-miami-turquoise text-white h-12 px-8"
+                    className="bg-miami-coral hover:bg-white hover:text-miami-coral text-white h-12 px-8"
                     onClick={() => navigateToState()}
                     disabled={!selectedState}
                   >
@@ -122,7 +123,7 @@ const Home = () => {
               
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
                 <Button 
-                  className="bg-miami-coral hover:bg-miami-turquoise text-white px-8 py-6 text-lg"
+                  className="bg-miami-coral hover:bg-white hover:text-miami-coral text-white px-8 py-6 text-lg"
                   onClick={() => navigate('/info')}
                 >
                   <Globe className="w-5 h-5 mr-2" />
@@ -139,6 +140,28 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      {/* Interactive Map Section */}
+      <section className="py-16 bg-[#1B2034] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-radial from-miami-turquoise to-transparent"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12">
+            <Globe className="inline-block h-12 w-12 text-miami-coral mb-4" />
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Explora Estados Unidos Interactivamente
+            </h2>
+            <div className="w-24 h-1 bg-miami-turquoise mx-auto mb-6"></div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Descubre cada estado pasando el cursor sobre el mapa. Conoce sus ciudades principales
+              y haz clic para explorar en detalle las maravillas que ofrece cada uno.
+            </p>
+          </div>
+          
+          <USAMap />
+        </div>
+      </section>
       
       {/* Popular States Section */}
       <section className="py-16 bg-miami-sand">

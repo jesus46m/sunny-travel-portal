@@ -78,6 +78,7 @@
   }
 }
 
+/* USA Theme Color Gradients */
 .miami-gradient {
   background: linear-gradient(135deg, #10b3c7 0%, #118ab2 100%);
 }
@@ -135,3 +136,124 @@
   background-attachment: fixed;
 }
 
+/* Radial gradient for backgrounds */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* State Map Styles */
+.state-path {
+  fill-opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.state-path:hover {
+  fill-opacity: 1;
+  stroke-width: 2px;
+}
+
+/* USA Theme Specific */
+.text-usa-blue {
+  color: #10b3c7;
+}
+
+.text-usa-red {
+  color: #ff6b6b;
+}
+
+.border-usa-blue {
+  border-color: #10b3c7;
+}
+
+.border-usa-red {
+  border-color: #ff6b6b;
+}
+
+/* Animated Lines Background */
+@keyframes line-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-lines-bg {
+  background: linear-gradient(135deg, 
+    rgba(16, 179, 199, 0.2) 25%, 
+    rgba(27, 32, 52, 0.2) 25%, 
+    rgba(27, 32, 52, 0.2) 50%, 
+    rgba(255, 107, 107, 0.2) 50%, 
+    rgba(255, 107, 107, 0.2) 75%, 
+    rgba(27, 32, 52, 0.2) 75%);
+  background-size: 200% 200%;
+  animation: line-animation 15s ease infinite;
+}
+
+/* City Card hover effect */
+.city-card {
+  transition: all 0.3s ease;
+}
+
+.city-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(16, 179, 199, 0.3);
+}
+
+/* Glowing dot animation */
+@keyframes glow-dot {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.glow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  animation: glow-dot 2s infinite;
+}
+
+/* USA Star spinner */
+@keyframes usa-star-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.usa-star-spinner {
+  animation: usa-star-spin 3s infinite linear;
+}
+
+/* Blur in animation */
+@keyframes blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.blur-in-animation {
+  animation: blur-in 0.8s ease forwards;
+}
