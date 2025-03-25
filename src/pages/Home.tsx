@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Globe } from "lucide-react";
@@ -14,6 +13,7 @@ import {
 import USAMap from "@/components/USAMap";
 import InteractiveUSAMap from "@/components/InteractiveUSAMap";
 import InteractiveMap from "@/components/InteractiveMap";
+import ProfessionalUSAMap from "@/components/ProfessionalUSAMap";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -80,7 +80,6 @@ const Home = () => {
 
   return (
     <div className="mt-16 usa-futuristic-bg">
-      {/* Hero Section */}
       <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1932&auto=format&fit=crop)" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl px-4">
@@ -143,7 +142,6 @@ const Home = () => {
         </div>
       </div>
       
-      {/* Interactive Map Section */}
       <section className="py-16 bg-[#1B2034] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-radial from-miami-turquoise to-transparent"></div>
@@ -165,7 +163,6 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Popular States Section */}
       <section className="py-16 bg-miami-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -224,7 +221,6 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Interactive USA Map before CTA Section */}
       <section className="py-16 bg-[#111827]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -240,11 +236,9 @@ const Home = () => {
           <InteractiveUSAMap />
         </div>
       </section>
-
-      {/* Nuevo mapa interactivo antes de la sección CTA */}
-      <InteractiveMap />
       
-      {/* CTA Section */}
+      <ProfessionalUSAMap />
+      
       <section className="py-16 bg-gradient-to-r from-miami-turquoise to-miami-coral text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
