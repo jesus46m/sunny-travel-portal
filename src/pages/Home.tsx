@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import USAMap from "@/components/USAMap";
 import InteractiveUSAMap from "@/components/InteractiveUSAMap";
+import InteractiveMap from "@/components/InteractiveMap";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -239,6 +240,9 @@ const Home = () => {
           <InteractiveUSAMap />
         </div>
       </section>
+
+      {/* Nuevo mapa interactivo antes de la sección CTA */}
+      <InteractiveMap />
       
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-miami-turquoise to-miami-coral text-white">
