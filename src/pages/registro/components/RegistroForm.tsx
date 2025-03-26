@@ -24,7 +24,7 @@ export const RegistroForm = () => {
   const form = useForm<RegistroFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nombre: user?.user_metadata?.nombre || "",
+      nombre: user?.user_metadata?.full_name || "",
       email: user?.email || "",
       actividades: [],
       comentarios: "",
