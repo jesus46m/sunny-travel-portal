@@ -38,21 +38,26 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
     setIsLoading(true);
     
     try {
-      const { error } = await supabase.auth.signUp({
+      // Registrar usuario con Supabase
+      const { data: authData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: {
-            nombre: data.nombre,
+            full_name: data.nombre, // Ensure this matches the field name in the trigger function
           },
+          emailRedirectTo: `${window.location.origin}/auth`
         },
       });
       
       if (error) throw error;
       
+      console.log("Registro exitoso:", authData);
+      
       toast.success("Cuenta creada correctamente", {
         description: "Ahora puedes iniciar sesión con tus credenciales",
       });
+      
       form.reset();
       onSuccess();
     } catch (error: any) {
