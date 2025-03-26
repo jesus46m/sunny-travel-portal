@@ -68,12 +68,13 @@ const SimpleUSAMap = () => {
   return (
     <div className="w-full max-w-4xl mx-auto rounded-xl glass-card p-6 overflow-hidden">
       {/* USA Map Background */}
-      <div className="relative w-full aspect-[4/3] bg-[#111827] rounded-lg overflow-hidden">
+      <div className="relative w-full aspect-[4/3] bg-[#111827] rounded-lg overflow-hidden shadow-lg">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1502988632461-b1626c28d13c?q=80&w=1740&auto=format&fit=crop" 
             alt="USA Map Background" 
             className="w-full h-full object-cover opacity-15"
+            loading="lazy"
           />
         </div>
         

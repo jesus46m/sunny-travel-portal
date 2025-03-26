@@ -6,7 +6,8 @@ const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate('/');
+    // This ensures the user is redirected to the home page
+    navigate('/', { replace: true });
   }, [navigate]);
 
   return null;

@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, MapPin, Globe } from "lucide-react";
+import { Search, MapPin, Globe, Calendar, Info, Hotel, Camera, Coffee, Utensils } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
@@ -10,10 +11,6 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
-import USAMap from "@/components/USAMap";
-import InteractiveUSAMap from "@/components/InteractiveUSAMap";
-import InteractiveMap from "@/components/InteractiveMap";
-import ProfessionalUSAMap from "@/components/ProfessionalUSAMap";
 import SimpleUSAMap from "@/components/SimpleUSAMap";
 
 const Home = () => {
@@ -69,6 +66,33 @@ const Home = () => {
     "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
   ];
 
+  const travelExperiences = [
+    {
+      title: "Playas de Ensueño",
+      description: "Descubre las mejores playas de Estados Unidos, desde la costa este hasta la oeste",
+      icon: <Camera />,
+      path: "/playas"
+    },
+    {
+      title: "Aventuras en la Naturaleza",
+      description: "Parques nacionales y reservas naturales para los amantes del aire libre",
+      icon: <MapPin />,
+      path: "/info"
+    },
+    {
+      title: "Gastronomía Local",
+      description: "Un recorrido por los sabores más auténticos de cada estado",
+      icon: <Utensils />,
+      path: "/gastronomia"
+    },
+    {
+      title: "Hospedaje Premium",
+      description: "Las mejores opciones de alojamiento para todos los presupuestos",
+      icon: <Hotel />,
+      path: "/info"
+    }
+  ];
+
   const handleStateSelect = (value: string) => {
     setSelectedState(value);
   };
@@ -81,6 +105,7 @@ const Home = () => {
 
   return (
     <div className="mt-16 usa-futuristic-bg">
+      {/* Hero Section */}
       <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1932&auto=format&fit=crop)" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl px-4">
@@ -143,6 +168,7 @@ const Home = () => {
         </div>
       </div>
       
+      {/* Interactive Map Section */}
       <section className="py-16 bg-[#1B2034] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-radial from-miami-turquoise to-transparent"></div>
@@ -164,6 +190,7 @@ const Home = () => {
         </div>
       </section>
       
+      {/* Popular Destinations Section */}
       <section className="py-16 bg-miami-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -222,24 +249,95 @@ const Home = () => {
         </div>
       </section>
       
+      {/* Travel Experiences Section - NEW */}
       <section className="py-16 bg-[#111827]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Mapa Interactivo de Estados Unidos
+              Experiencias de Viaje Inolvidables
             </h2>
             <div className="w-24 h-1 bg-miami-coral mx-auto mb-6"></div>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Descubre información detallada sobre cada estado pasando el cursor por el mapa y haz clic para explorar más.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+              Descubre una variedad de experiencias únicas que harán de tu visita a Estados Unidos una aventura inolvidable.
             </p>
           </div>
           
-          <InteractiveUSAMap />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {travelExperiences.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-card p-6 rounded-xl hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer bg-white/5"
+                onClick={() => navigate(exp.path)}
+              >
+                <div className="bg-gradient-to-br from-miami-coral to-miami-turquoise p-4 rounded-full w-fit mx-auto mb-4">
+                  {exp.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white text-center mb-3">{exp.title}</h3>
+                <p className="text-gray-300 text-center">{exp.description}</p>
+                <div className="mt-4 text-center">
+                  <Button 
+                    variant="outline" 
+                    className="border-miami-coral text-miami-coral hover:bg-miami-coral hover:text-white"
+                    onClick={() => navigate(exp.path)}
+                  >
+                    Descubrir
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
       
-      <ProfessionalUSAMap />
+      {/* Travel Tips Section - NEW */}
+      <section className="py-16 bg-miami-sand">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Info className="inline-block h-12 w-12 text-miami-coral mb-4" />
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Consejos para Viajeros
+            </h2>
+            <div className="w-24 h-1 bg-miami-turquoise mx-auto mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Información útil para planificar tu viaje a Estados Unidos
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <Calendar className="h-12 w-12 text-miami-coral mb-4" />
+              <h3 className="text-xl font-bold mb-2">Mejor Época para Viajar</h3>
+              <p className="text-gray-600">La primavera (abril-junio) y el otoño (septiembre-noviembre) ofrecen temperaturas agradables y menos turistas en la mayoría de los destinos.</p>
+            </div>
+            
+            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <Coffee className="h-12 w-12 text-miami-coral mb-4" />
+              <h3 className="text-xl font-bold mb-2">Cultura y Costumbres</h3>
+              <p className="text-gray-600">La propina es una costumbre importante en EEUU. En restaurantes, se espera una propina del 15-20% del total de la cuenta.</p>
+            </div>
+            
+            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <Info className="h-12 w-12 text-miami-coral mb-4" />
+              <h3 className="text-xl font-bold mb-2">Documentación</h3>
+              <p className="text-gray-600">Asegúrate de tener un pasaporte válido y verificar los requisitos de visa según tu país de origen antes de planificar tu viaje.</p>
+            </div>
+          </div>
+          
+          <div className="text-center mt-10">
+            <Button 
+              className="bg-miami-coral hover:bg-miami-turquoise text-white px-6 py-3 text-lg"
+              onClick={() => navigate('/info')}
+            >
+              Más consejos de viaje
+            </Button>
+          </div>
+        </div>
+      </section>
       
+      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-miami-turquoise to-miami-coral text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -261,4 +359,3 @@ const Home = () => {
 };
 
 export default Home;
-
