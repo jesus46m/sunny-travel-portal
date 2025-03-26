@@ -14,6 +14,7 @@ import USAMap from "@/components/USAMap";
 import InteractiveUSAMap from "@/components/InteractiveUSAMap";
 import InteractiveMap from "@/components/InteractiveMap";
 import ProfessionalUSAMap from "@/components/ProfessionalUSAMap";
+import SimpleUSAMap from "@/components/SimpleUSAMap";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -154,12 +155,12 @@ const Home = () => {
             </h2>
             <div className="w-24 h-1 bg-miami-turquoise mx-auto mb-6"></div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Descubre cada estado pasando el cursor sobre el mapa. Conoce sus ciudades principales
-              y haz clic para explorar en detalle las maravillas que ofrece cada uno.
+              Descubre cada estado haciendo clic en el mapa. Conoce sus ciudades principales
+              y explora en detalle las maravillas que ofrece cada uno.
             </p>
           </div>
           
-          <USAMap />
+          <SimpleUSAMap />
         </div>
       </section>
       
@@ -260,3 +261,4 @@ const Home = () => {
 };
 
 export default Home;
+
