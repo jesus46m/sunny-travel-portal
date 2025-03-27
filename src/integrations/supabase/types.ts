@@ -9,6 +9,146 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author_id: string | null
+          category: string
+          content: string
+          cover_image: string | null
+          excerpt: string
+          id: string
+          is_published: boolean | null
+          published_at: string
+          slug: string
+          tags: string[] | null
+          title: string
+        }
+        Insert: {
+          author_id?: string | null
+          category: string
+          content: string
+          cover_image?: string | null
+          excerpt: string
+          id?: string
+          is_published?: boolean | null
+          published_at?: string
+          slug: string
+          tags?: string[] | null
+          title: string
+        }
+        Update: {
+          author_id?: string | null
+          category?: string
+          content?: string
+          cover_image?: string | null
+          excerpt?: string
+          id?: string
+          is_published?: boolean | null
+          published_at?: string
+          slug?: string
+          tags?: string[] | null
+          title?: string
+        }
+        Relationships: []
+      }
+      experience_categories: {
+        Row: {
+          description: string | null
+          icon: string | null
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      experiences: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          created_by: string | null
+          description: string
+          id: string
+          image_url: string | null
+          price_range: string | null
+          state_id: string
+          title: string
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          description: string
+          id?: string
+          image_url?: string | null
+          price_range?: string | null
+          state_id: string
+          title: string
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          image_url?: string | null
+          price_range?: string | null
+          state_id?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "experiences_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "experience_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gallery_photos: {
+        Row: {
+          description: string | null
+          id: string
+          image_url: string
+          state_id: string
+          title: string
+          uploaded_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          image_url: string
+          state_id: string
+          title: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          image_url?: string
+          state_id?: string
+          title?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -33,6 +173,39 @@ export type Database = {
           full_name?: string | null
           id?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      ratings: {
+        Row: {
+          comment: string | null
+          created_at: string
+          destination_id: string
+          destination_type: string
+          id: string
+          rating: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          destination_id: string
+          destination_type: string
+          id?: string
+          rating: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          destination_id?: string
+          destination_type?: string
+          id?: string
+          rating?: number
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -71,7 +244,15 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      destination_ratings: {
+        Row: {
+          average_rating: number | null
+          destination_id: string | null
+          destination_type: string | null
+          total_ratings: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never

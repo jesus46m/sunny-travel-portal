@@ -18,6 +18,10 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "./hooks/useAuth";
 import MisVisitas from "./pages/MisVisitas";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Experiences from "./pages/Experiences";
+import ExperienceDetail from "./pages/ExperienceDetail";
 
 function App() {
   return (
@@ -36,6 +40,10 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route path="/mis-visitas" element={<ProtectedRoute><MisVisitas /></ProtectedRoute>} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/experiences" element={<Experiences />} />
+          <Route path="/experience/:id" element={<ExperienceDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster richColors position="top-right" />
