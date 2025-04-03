@@ -18,6 +18,7 @@ interface BlogPost {
   category: string;
   tags: string[];
   cover_image: string;
+  slug: string; // Added the missing slug property
   author: {
     full_name: string;
   } | null;
