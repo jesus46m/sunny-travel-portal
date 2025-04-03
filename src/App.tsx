@@ -22,6 +22,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Experiences from "./pages/Experiences";
 import ExperienceDetail from "./pages/ExperienceDetail";
+import TravelPlanner from "./pages/TravelPlanner";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
+          <Route path="/travel-planner" element={<TravelPlanner />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster richColors position="top-right" />
