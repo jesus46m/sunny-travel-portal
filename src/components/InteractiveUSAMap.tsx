@@ -271,6 +271,7 @@ const InteractiveUSAMap = () => {
   };
 
   const handleStateClick = (stateId: string) => {
+    // Aseguramos que cada estado nos lleve a su propia página
     navigate(`/state/${stateId}`);
   };
 

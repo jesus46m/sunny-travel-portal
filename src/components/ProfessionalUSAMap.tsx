@@ -76,6 +76,7 @@ const ProfessionalUSAMap = () => {
   };
 
   const handleStateClick = (stateId: string) => {
+    // Navegamos a la página específica del estado
     navigate(`/state/${stateId}`);
   };
 
