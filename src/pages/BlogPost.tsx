@@ -9,6 +9,8 @@ import { es } from "date-fns/locale";
 import { toast } from "sonner";
 import RatingStars from "@/components/RatingStars";
 import { useAuth } from "@/hooks/useAuth";
+import BlogComments from "@/components/BlogComments";
+import RelatedExperiences from "@/components/RelatedExperiences";
 
 interface BlogPost {
   id: string;
@@ -29,6 +31,17 @@ interface AverageRating {
   total_ratings: number;
 }
 
+interface Comment {
+  id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+  user: {
+    full_name: string;
+    avatar_url: string;
+  } | null;
+}
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -38,6 +51,7 @@ const BlogPost = () => {
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [averageRating, setAverageRating] = useState<AverageRating | null>(null);
   const [userRating, setUserRating] = useState<number | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -60,6 +74,8 @@ const BlogPost = () => {
         if (data) {
           fetchRelatedPosts(data.category, data.id);
           fetchRatings(data.id);
+          fetchComments(data.id);
+          
           if (user) {
             fetchUserRating(data.id);
           }
@@ -142,6 +158,25 @@ const BlogPost = () => {
       }
     } catch (error) {
       console.error("Error fetching user rating:", error);
+    }
+  };
+
+  const fetchComments = async (postId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_comments')
+        .select(`
+          *,
+          user:user_id(full_name, avatar_url)
+        `)
+        .eq('post_id', postId)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      setComments(data as unknown as Comment[]);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
     }
   };
 
@@ -303,8 +338,20 @@ const BlogPost = () => {
           </div>
         </div>
         
+        {/* Comments section */}
+        <BlogComments 
+          postId={post.id} 
+          comments={comments} 
+          onNewComment={() => fetchComments(post.id)} 
+        />
+        
+        {/* Experiences related to this post category */}
+        <div className="mt-12 pt-6 border-t border-gray-200">
+          <RelatedExperiences category={post.category} />
+        </div>
+        
         {relatedPosts.length > 0 && (
-          <div className="border-t border-gray-200 pt-8">
+          <div className="border-t border-gray-200 pt-8 mt-12">
             <h3 className="text-2xl font-bold mb-6">Artículos relacionados</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map(relatedPost => (
