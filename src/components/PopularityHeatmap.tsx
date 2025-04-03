@@ -15,38 +15,54 @@ const PopularityHeatmap = () => {
   useEffect(() => {
     const fetchPopularityData = async () => {
       setIsLoading(true);
-      // Fetch data from multiple sources to create a heatmap
-      // 1. Count experiences per state
-      const { data: experienceData, error: experienceError } = await supabase
-        .from('experiences')
-        .select('state_id, count')
-        .group('state_id');
-
-      // 2. Get ratings data
-      const { data: ratingData, error: ratingError } = await supabase
-        .from('destination_ratings')
-        .select('*')
-        .eq('destination_type', 'state');
-
-      if (experienceError || ratingError) {
-        console.error('Error fetching data:', experienceError || ratingError);
-        setIsLoading(false);
-        return;
-      }
-
-      // Process data to create popularity metric
-      const processedData = experienceData.map((exp) => {
-        const stateRatings = ratingData?.find(r => r.destination_id === exp.state_id);
-        const ratingFactor = stateRatings ? (stateRatings.average_rating || 3) : 3;
+      
+      try {
+        // Get experiences by state
+        const { data: experiencesByState, error: experiencesError } = await supabase
+          .from('experiences')
+          .select('state_id, id')
+          
+        if (experiencesError) {
+          console.error('Error fetching experiences:', experiencesError);
+          setIsLoading(false);
+          return;
+        }
         
-        return {
-          state_id: exp.state_id,
-          popularity: exp.count * (ratingFactor / 5) * 100 // Scale to percentage
-        };
-      });
+        // Count experiences per state
+        const stateCountMap: Record<string, number> = {};
+        experiencesByState?.forEach(exp => {
+          stateCountMap[exp.state_id] = (stateCountMap[exp.state_id] || 0) + 1;
+        });
+        
+        // 2. Get ratings data
+        const { data: ratingData, error: ratingError } = await supabase
+          .from('destination_ratings')
+          .select('*')
+          .eq('destination_type', 'state');
 
-      setPopularityData(processedData);
-      setIsLoading(false);
+        if (ratingError) {
+          console.error('Error fetching ratings:', ratingError);
+          setIsLoading(false);
+          return;
+        }
+
+        // Process data to create popularity metric
+        const processedData = Object.keys(stateCountMap).map(stateId => {
+          const stateRatings = ratingData?.find(r => r.destination_id === stateId);
+          const ratingFactor = stateRatings ? (stateRatings.average_rating || 3) : 3;
+          
+          return {
+            state_id: stateId,
+            popularity: stateCountMap[stateId] * (ratingFactor / 5) * 100 // Scale to percentage
+          };
+        });
+
+        setPopularityData(processedData);
+      } catch (error) {
+        console.error("Error processing data:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchPopularityData();

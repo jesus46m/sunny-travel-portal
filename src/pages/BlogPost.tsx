@@ -20,7 +20,7 @@ interface BlogPost {
   category: string;
   tags: string[];
   cover_image: string;
-  slug: string; // Added the missing slug property
+  slug: string;
   author: {
     full_name: string;
   } | null;
@@ -163,18 +163,15 @@ const BlogPost = () => {
 
   const fetchComments = async (postId: string) => {
     try {
-      const { data, error } = await supabase
-        .from('blog_comments')
-        .select(`
-          *,
-          user:user_id(full_name, avatar_url)
-        `)
-        .eq('post_id', postId)
-        .order('created_at', { ascending: false });
+      // Use a stored procedure/rpc to get comments for a post as a workaround
+      // until types are updated
+      const { data, error } = await supabase.rpc('get_blog_comments_for_post', {
+        p_post_id: postId
+      });
 
       if (error) throw error;
 
-      setComments(data as unknown as Comment[]);
+      setComments(data || []);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }

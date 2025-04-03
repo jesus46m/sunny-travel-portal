@@ -43,10 +43,14 @@ const Experiences = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<Category[]>([]);
   const [states, setStates] = useState<State[]>([]);
-  const [searchParams, setSearchParams] = useState({
+  const [searchParams, setSearchParams] = useState<{
+    term: string;
+    category: string | undefined;
+    state: string | undefined;
+  }>({
     term: "",
-    category: undefined as string | undefined,
-    state: undefined as string | undefined
+    category: undefined,
+    state: undefined
   });
 
   // These would typically come from your database
@@ -137,7 +141,11 @@ const Experiences = () => {
   }, []);
 
   const handleSearch = (params: { term: string; category?: string; state?: string }) => {
-    setSearchParams(params);
+    setSearchParams({
+      term: params.term,
+      category: params.category,
+      state: params.state
+    });
     
     let filtered = experiences;
     
@@ -251,7 +259,7 @@ const Experiences = () => {
           <p className="text-gray-500 mb-6">Prueba con otros filtros o consulta todas las experiencias disponibles</p>
           <Button 
             onClick={() => {
-              setSearchParams({ term: "" });
+              setSearchParams({ term: "", category: undefined, state: undefined });
               setFilteredExperiences(experiences);
             }}
             className="bg-miami-coral hover:bg-miami-turquoise"
@@ -287,7 +295,7 @@ const Experiences = () => {
               key={state.id}
               variant="outline"
               className="h-auto py-4 flex flex-col items-center justify-center gap-2 hover:border-miami-turquoise hover:text-miami-turquoise"
-              onClick={() => handleSearch({ term: "", state: state.id })}
+              onClick={() => handleSearch({ term: "", category: undefined, state: state.id })}
             >
               <span className="font-medium">{state.name}</span>
             </Button>

@@ -1,1 +1,8 @@
+
 project_id = "vqffehsaiufhwapqngrg"
+
+[functions.add_blog_comment]
+verify_jwt = true
+
+[functions.get_blog_comments]
+verify_jwt = false
