@@ -163,7 +163,9 @@ const BlogPost = () => {
     try {
       const { data, error } = await supabase.rpc('get_blog_comments_for_post', {
         p_post_id: postId
-      } as any);
+      } as {
+        p_post_id: string;
+      });
 
       if (error) throw error;
 

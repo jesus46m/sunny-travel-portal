@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -45,11 +44,13 @@ const BlogComments = ({ postId, comments, onNewComment }: BlogCommentsProps) => 
     setIsSubmitting(true);
     
     try {
-      // Use rpc with explicit type casting to avoid TypeScript errors
       const { error } = await supabase.rpc('add_blog_comment', {
         p_post_id: postId,
         p_content: newComment.trim()
-      } as any);
+      } as {
+        p_post_id: string;
+        p_content: string;
+      });
 
       if (error) throw error;
       
