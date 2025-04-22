@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -39,6 +40,10 @@ interface Comment {
     full_name: string;
     avatar_url: string;
   } | null;
+}
+
+interface GetBlogCommentsParams {
+  p_post_id: string;
 }
 
 const BlogPost = () => {
@@ -163,7 +168,7 @@ const BlogPost = () => {
     try {
       const { data, error } = await supabase.rpc('get_blog_comments_for_post', {
         p_post_id: postId
-      } as any);
+      } as GetBlogCommentsParams);
 
       if (error) throw error;
 

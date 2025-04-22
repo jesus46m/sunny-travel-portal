@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,11 @@ interface BlogCommentsProps {
   postId: string;
   comments: Comment[];
   onNewComment: () => void;
+}
+
+interface AddBlogCommentParams {
+  p_post_id: string;
+  p_content: string;
 }
 
 const BlogComments = ({ postId, comments, onNewComment }: BlogCommentsProps) => {
@@ -47,7 +53,7 @@ const BlogComments = ({ postId, comments, onNewComment }: BlogCommentsProps) => 
       const { error } = await supabase.rpc('add_blog_comment', {
         p_post_id: postId,
         p_content: newComment.trim()
-      } as any);
+      } as AddBlogCommentParams);
 
       if (error) throw error;
       
