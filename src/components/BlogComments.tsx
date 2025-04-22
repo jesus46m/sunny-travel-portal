@@ -47,10 +47,7 @@ const BlogComments = ({ postId, comments, onNewComment }: BlogCommentsProps) => 
       const { error } = await supabase.rpc('add_blog_comment', {
         p_post_id: postId,
         p_content: newComment.trim()
-      } as {
-        p_post_id: string;
-        p_content: string;
-      });
+      } as any);
 
       if (error) throw error;
       

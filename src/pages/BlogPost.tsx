@@ -123,7 +123,7 @@ const BlogPost = () => {
         .eq('destination_id', postId)
         .single();
 
-      if (error && error.code !== 'PGRST116') { // PGRST116 is the error code for no rows returned
+      if (error && error.code !== 'PGRST116') {
         throw error;
       }
 
@@ -147,7 +147,7 @@ const BlogPost = () => {
         .eq('user_id', user.id)
         .single();
 
-      if (error && error.code !== 'PGRST116') { // PGRST116 is the error code for no rows returned
+      if (error && error.code !== 'PGRST116') {
         throw error;
       }
 
@@ -163,9 +163,7 @@ const BlogPost = () => {
     try {
       const { data, error } = await supabase.rpc('get_blog_comments_for_post', {
         p_post_id: postId
-      } as {
-        p_post_id: string;
-      });
+      } as any);
 
       if (error) throw error;
 
