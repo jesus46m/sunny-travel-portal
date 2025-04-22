@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -70,7 +69,6 @@ const BlogPost = () => {
 
         setPost(data as unknown as BlogPost);
         
-        // Fetch related posts from the same category
         if (data) {
           fetchRelatedPosts(data.category, data.id);
           fetchRatings(data.id);
@@ -163,11 +161,9 @@ const BlogPost = () => {
 
   const fetchComments = async (postId: string) => {
     try {
-      // Use a stored procedure/rpc to get comments for a post as a workaround
-      // until types are updated
       const { data, error } = await supabase.rpc('get_blog_comments_for_post', {
         p_post_id: postId
-      });
+      } as any);
 
       if (error) throw error;
 
@@ -186,7 +182,6 @@ const BlogPost = () => {
     if (!post) return;
 
     try {
-      // Check if user has already rated this post
       const { data: existingRating, error: checkError } = await supabase
         .from('ratings')
         .select('id')
@@ -202,7 +197,6 @@ const BlogPost = () => {
       let ratingResult;
       
       if (existingRating) {
-        // Update existing rating
         ratingResult = await supabase
           .from('ratings')
           .update({ 
@@ -211,7 +205,6 @@ const BlogPost = () => {
           })
           .eq('id', existingRating.id);
       } else {
-        // Insert new rating
         ratingResult = await supabase
           .from('ratings')
           .insert({ 
@@ -335,14 +328,12 @@ const BlogPost = () => {
           </div>
         </div>
         
-        {/* Comments section */}
         <BlogComments 
           postId={post.id} 
           comments={comments} 
           onNewComment={() => fetchComments(post.id)} 
         />
         
-        {/* Experiences related to this post category */}
         <div className="mt-12 pt-6 border-t border-gray-200">
           <RelatedExperiences category={post.category} />
         </div>

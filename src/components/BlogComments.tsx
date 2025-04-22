@@ -45,11 +45,11 @@ const BlogComments = ({ postId, comments, onNewComment }: BlogCommentsProps) => 
     setIsSubmitting(true);
     
     try {
-      // Use rpc instead of direct table access as a workaround for type issues
+      // Use rpc with explicit type casting to avoid TypeScript errors
       const { error } = await supabase.rpc('add_blog_comment', {
         p_post_id: postId,
         p_content: newComment.trim()
-      });
+      } as any);
 
       if (error) throw error;
       
